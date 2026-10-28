@@ -1,0 +1,519 @@
+:root {
+    --primary-color: rgba(0, 0, 0, 0.938); 
+    --secondary-color: #2ecc71;
+}
+
+.redt-text {
+    color: red;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+
+}
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* KORRIGIERT: Exakt 100% der sichtbaren Bildschirmhöhe */
+    background-color: var(--primary-color);
+    font-family: "Open Sans", sans-serif;
+    color: white;
+    overflow-x: hidden;
+}
+
+main {
+    padding-top: 150px;
+    flex: 1 0 auto;
+}
+
+/*HEADER*/
+header {
+    display: flex;
+    justify-content: space-between;
+    gap: 100px;
+    align-items: center;
+    height: 100px;
+    border: none;
+    position: fixed;
+    top: 0;
+    background-color: transparent;
+    backdrop-filter: blur(25px);
+    z-index: 999;
+    width: 100%;
+    box-shadow: 0px 0px 15px -12px white;
+}
+
+header img {
+    position: relative;
+    margin-left: 50px;
+    width: 200px;
+}
+nav ul {
+    margin-left: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    letter-spacing: 0.2rem;
+    padding: 0;
+}
+nav ul li {
+    
+    list-style: none;
+    
+}
+nav ul li a {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    position: relative;
+    transition: transform 1s ease;
+    font-size: 1.5rem;
+}
+nav ul li a:hover {
+    transform: translateY(-20px);
+    scale: 1.1;
+    color: red;
+}
+nav ul li a::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    font-size: 0.8em;
+    color: white;
+
+    transform: translateY(0) scale(1);
+    transition: transform 0.5s ease, opacity 0.2s ease;
+    transition-delay: 0.1s;
+    opacity: 0;
+}
+nav ul li a:hover::after {
+    opacity: 1;
+    transform: translateY(30px);
+    filter: blur(2.5px);
+}
+
+/*SEARCHBAR*/
+.search-bar {
+    position: relative;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 14vw;
+    height: 40px;
+    margin-right: 50px;
+    
+}
+.searchBar {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+.searchBar input {
+    border: 2px solid red;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-right: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    background: transparent;
+    border-style: none;
+    border: 2px solid white;
+    padding-left: 20px;
+    transition: width 1s ease;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: white;
+    cursor: text;
+}
+.searchBar label {
+  background-color: transparent;
+  position: absolute;
+  left: 20px;
+  font-size: 1rem;
+  color: white;
+  padding: 0 5px;
+  /* Beide Animationen in einer Zeile zusammengefasst */
+  transition: transform 0.5s ease, opacity 0.3s ease; 
+}
+
+/* Korrekt außerhalb des Hauptblocks platziert */
+.searchBar:hover label {
+  color: red;
+}
+
+.searchBar:focus-within label {
+  transform: translateX(150px);
+  opacity: 0;
+}
+.searchBar:focus-within .search-icon {
+    color: red;
+}
+
+.submit {
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+    width: 40px;
+    height: 30px;
+    align-self: center;
+    background: transparent;
+    border-style: none;
+    cursor: pointer;
+}
+.search-icon {
+    width: 100%;
+    height: 100%;
+    color: white;
+    margin-right: 20px;
+    position: absolute;
+
+    &&.search-icon:hover {
+    scale: 0.8;
+    color: red;
+    }
+}
+
+/*SECTION SERIALE / FILMA*/
+section {
+    max-width: 100vw;
+    height: 400px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 100px;
+    padding-left: 100px;
+    transform: translateY(-150px);
+}
+
+h2 {
+    width: 50vw;
+    justify-self: start;
+    margin-left: 0px;
+}
+
+.more-link-s,
+.more-link-f {
+    font-size: 0.8rem;
+    color: white;
+    text-decoration: none;
+    margin-left: 1620px;
+}
+.more-link-s {
+    transform: translateY(280px);
+}
+.more-link-f {
+    transform: translateY(310px);
+}
+
+.carousel {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 300px;
+    overflow-x: auto;
+    gap: 0.5em;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    left: 10px;
+    padding: 0 20px;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel::scroll-button(right), 
+.carousel::scroll-button(left) {
+    background-color: white;
+    content: '⭢';
+    border: none;
+    background-color: red;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding-bottom: .1em;
+    cursor: pointer;
+    position: fixed;
+    translate: -50%;
+}
+.carousel::scroll-button(right):hover, 
+.carousel::scroll-button(left):hover {
+    background-color: white;
+    color: black;
+    opacity: 0.7;
+}
+
+.carousel::scroll-button(left) {
+    content: '⭠';
+    translate: 50%;
+}
+
+.carousel::scroll-button(right):disabled, 
+.carousel::scroll-button(left):disabled {
+    opacity: 0.5;
+    cursor: auto;
+}
+
+.carousel-seriale {
+    anchor-name: --carousel-seriale;
+}
+.carousel-seriale::scroll-button(right), 
+.carousel-seriale::scroll-button(left) {
+    position-anchor: --carousel-seriale;
+}
+.carousel-seriale::scroll-button(right) { position-area: right center; }
+.carousel-seriale::scroll-button(left)  { position-area: left center; }
+
+.carousel-filma {
+    anchor-name: --carousel-filma; /
+}
+.carousel-filma::scroll-button(right), 
+.carousel-filma::scroll-button(left) {
+    position-anchor: --carousel-filma;
+}
+.carousel-filma::scroll-button(right) { position-area: right center; }
+.carousel-filma::scroll-button(left)  { position-area: left center; }
+
+.card {
+    display: flex;
+    align-items: end;
+    gap: 5px;
+    scroll-snap-align: start;
+    flex: 0 0 17em;
+    height: 10em;
+    background-color: white;
+    padding: 1em;
+    border-radius: .5em;
+    text-align: start;
+    align-content: end;
+    text-decoration: none;
+    color: white;
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: height 0.5s ease;
+}
+.card:hover {
+    height: 60%;
+    box-shadow: 2px 2px 20px -4px red;
+}
+.banner {
+    transform: translateY(-120px);
+}
+#banner {
+  width: 100%;
+  height: auto;
+  
+  /* Blendet das Bild oben und unten weich aus */
+  -webkit-mask-image: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0) 0%, 
+    rgba(0, 0, 0, 1) 15%, 
+    rgba(0, 0, 0, 1) 85%, 
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0) 0%, 
+    rgba(0, 0, 0, 1) 15%, 
+    rgba(0, 0, 0, 1) 85%, 
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+
+
+.card-text {
+    transition: transform 0.5s ease;
+}
+.card:hover .card-text {
+    transform: translateY(20px);
+}
+
+.card-text h3 {
+    font-size: 1.1rem;
+    margin-bottom: -10px;
+}
+
+.card-text h4 {
+    margin-bottom: -10px;
+    font-size: 0.8rem;
+}
+.card-text p{
+    top: -10px;
+    font-size: 0.6rem;
+}
+
+
+.card p {
+    font-size: 0.8rem;
+}
+
+/*CARDS FILMA*/
+
+.carousel-filma {
+    height: 100%;
+}
+
+.card-h {
+    display: flex;
+    align-items: end;
+    scroll-snap-align: start;
+    flex: 0 0 10em;
+    height: 230px;
+    border-radius: .5em;
+    text-align: start;
+    color: white;
+    text-decoration: none;
+    align-content: end;
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: height 0.5s ease;
+
+}
+.card-h:hover {
+    height: 75%;
+    box-shadow: 2px 2px 20px -4px red;
+}
+.card-h-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+    transform: translateY(0px);
+    transition: transform 0.5s ease;
+    padding: 5px;
+    margin-bottom: 50px;
+}
+.card-h:hover .card-h-text {
+    transform: translateY(20px);
+
+}
+
+.card-h-text h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    margin-bottom: -10px;
+}
+
+/* Ändert das Aussehen ALLER Fenster gleichzeitig */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8); /* Dunkler Hintergrund */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    
+    /* Standardmäßig unsichtbar */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Ändert das Aussehen ALLER inneren Boxen gleichzeitig */
+.popup-box {
+    background: #88000056; 
+    color: white;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 600px;
+    width: 90%;
+    position: absolute;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Schließen-Button in allen Fenstern */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2.5rem;
+    text-decoration: none;
+    color: white;
+    line-height: 1;
+}
+.close-btn:hover {
+    color: red !important; /* Wird rot, wenn man mit der Maus drüberfährt */
+}
+
+/* Der magische CSS-Befehl: Aktiviert das spezifische Fenster, das angeklickt wurde */
+.popup-overlay:target {
+    opacity: 1;
+    visibility: visible;
+}
+
+.section:has(.popup-overlay:target) {
+    position: relative;
+    z-index: 99999 !important;
+}
+
+footer {
+    /*border: 2px solid red;*/
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    background-color: transparent;
+    margin-top: auto;
+}
+footer a {
+    /*border: 2px solid green;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30vw;
+    min-width: 300px;
+    text-decoration: none;
+    color: white;
+}
+
+.footer-nav li {
+    list-style: none;
+}
+footer a img {
+    width: 80%;
+}
+.footer-conent {
+    /*border: 2px solid blue;*/
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    font-size: clamp(0.5rem, 3vw, 1.3rem);
+}
+.knax-span {
+    color: red;
+}
+
+.animaback {
+
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1000px;
+
+}

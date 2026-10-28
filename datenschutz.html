@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link id="fenster-logo" rel="icon" type="image/png" href="a-logo-cut.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik+Storm&family=Sekuya&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #juro-cont {
+        width: 40%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      footer {
+        padding-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="index.html">
+        <img src="knax-logo.png" alt="KNAX Logo" />
+      </a>
+      <nav>
+        <ul>
+          <li>
+            <a href="index.html" data-text="←"
+              ><ion-icon name="home"></ion-icon
+            ></a>
+          </li>
+          <li><a href="seriale.html" data-text="Seriale">Seriale</a></li>
+          <li><a href="filma.html" data-text="Filma">Filma</a></li>
+          <li><a href="doku.html" data-text="Dokumentar">Dokumentar</a></li>
+          <li><a href="show.html" data-text="Show">Show</a></li>
+          <li><a href="livetv.html" data-text="LiveTV">LiveTV</a></li>
+        </ul>
+      </nav>
+      <div class="search-bar">
+        <form class="searchBar" onsubmit="event.preventDefault()">
+          <input type="text" name="kerko" id="searchInput" />
+          <label id="kerko-label" for="kerko">kërko</label>
+          <button class="submit" type="button">
+            <ion-icon class="search-icon" name="search-outline"></ion-icon>
+          </button>
+        </form>
+      </div>
+    </header>
+
+    <main>
+      <div class="container" id="juro-cont">
+        <h2>Deklaratë për Mbrojtjen e të Dhënave</h2>
+        <br />
+        <br />
+        <p>
+          1. Mbrojtja e të dhënave në një vështrim <br />
+          <br />
+          Shënime të përgjithshme<br />
+          <br />
+          Shënimet e mëposhtme ofrojnë një përmbledhje të thjeshtë se çfarë
+          ndodh me të dhënat tuaja personale kur vizitoni këtë faqen tonë të
+          internetit. Të dhënat personale janë të gjitha ato të dhëna me të
+          cilat ju mund të identifikoheni personalisht.<br />
+          <br />
+          Mbledhja e të dhënave në këtë faqe interneti<br />
+          <br />
+          Kush është përgjegjës për mbledhjen e të dhënave në këtë faqe?<br />
+          Përpunimi i të dhënave në këtë faqe interneti bëhet nga menaxhuesi i
+          faqes:<br />
+          <br />
+          KNAX (Knaqu Flix) <br />
+          DIG IT Web Development <br />
+          Pronar: Sytrim Gahi <br />
+          Bachstraße 15 <br />
+          50259 Pulheim <br />
+          Gjermani (DE) <br />
+          <br />
+          Kontakti: <br />
+          Tel.: +49 163 8636469 <br />
+          E-mail: info@knax.com <br />
+          Web: www.knax.com <br />
+          <br />
+          <br />
+          Si i mbledhim të dhënat tuaja?<br />
+          <br />
+          Të dhënat tuaja mblidhen pjesërisht sepse na i thoni vetë (p.sh.
+          përmes një e-maili). Të dhëna të tjera mblidhen automatikisht nga
+          sistemet tona të TI-së (IT) ose pasi jepni pëlqimin tuaj kur vizitoni
+          faqen. Këto janë kryesisht të dhëna teknike (p.sh. lloji i
+          shfletuesit/browserit, sistemi operativ ose koha kur keni hapur
+          faqen).<br />
+          <br />
+          Për çfarë i përdorim të dhënat tuaja? <br />
+          <br />
+          Një pjesë e të dhënave mblidhet për të siguruar që faqja e internetit
+          të funksionojë pa gabime. Në faqen tonë, këto të dhëna përdoren
+          kryesisht për t'ju shfaqur videot dhe transmetimet e integruara nga
+          platformat e palëve të treta (YouTube dhe gjirafa.com).<br />
+          <br /><br />
+          2. Shënime të përgjithshme dhe informacione të detyrueshme<br />
+          <br />
+          Mbrojtja e të dhënave<br />
+          <br />
+          Menaxhuesit e kësaj faqeje e marrin shumë seriozisht mbrojtjen e të
+          dhënave tuaja personale. Ne i trajtojmë të dhënat tuaja personale në
+          mënyrë konfidenciale dhe në përputhje me rregullat ligjore për
+          mbrojtjen e të dhënave si dhe me këtë deklaratë.<br />
+          <br />
+          Shënim për palën përgjegjëse<br />
+          <br />
+          Pala përgjegjëse për përpunimin e të dhënave në këtë faqe interneti
+          është:<br />
+          Sytrim Gahi - DIG IT Web Development<br />
+          E-Mail: info@knax.com<br />
+          <br />
+          Tërheqja e pëlqimit tuaj për përpunimin e të dhënave<br />
+          <br />
+          Shumë procese të përpunimit të të dhënave janë të mundshme vetëm me
+          pëlqimin tuaj të shprehur. Ju mund ta tërhiqni një pëlqim të dhënë
+          tashmë në çdo kohë. Ligjshmëria e përpunimit të të dhënave të bërë
+          deri në momentin e tërheqjes mbetet e paprekur.<br />
+          <br /><br />
+          3. Shërbimet e palëve të treta dhe integrimi i videove (Embedding)<br />
+          <br />
+          Ne nuk mbajmë (host) asnjë video në serverët tanë. Për t'ju ofruar
+          filma, seriale, emisione dhe kanale LIVE TV shqiptare, ne integrojmë
+          përmbajtje nga platforma të jashtme. Përmes ngarkimit të këtyre
+          përmbajtjeve, të dhëna teknike të nevojshme (përfshirë adresën tuaj
+          IP) u dërgohen ofruesve përkatës.<br />
+          <br />
+          YouTube (me modalitetin e zgjeruar të mbrojtjes së të dhënave) <br />
+          <br />
+          Kjo faqe interneti integron video nga faqja YouTube. Ofruesi i këtij
+          shërbimi është Google Ireland Limited ("Google"), Gordon House, Barrow
+          Street, Dublin 4, Irlandë.<br />
+          <br />
+          Ne e përdorim YouTube në modalitetin e zgjeruar të mbrojtjes së të
+          dhënave. Sipas YouTube, ky modalitet siguron që YouTube të mos ruajë
+          informacione për vizitorët në këtë faqe interneti përpara se ata të
+          shikojnë videon. Sapo të nisni një video në YouTube në faqen tonë,
+          krijohet një lidhje me serverët e YouTube. Kjo i tregon serverit të
+          YouTube se cilat nga faqet tona keni vizituar.<br />
+          <br />
+          Nëse jeni të kyçur (logged in) në llogarinë tuaj në YouTube, ju i
+          lejoni YouTube-it të lidhë sjelljen tuaj të lundrimit direkt me
+          profilin tuaj personal. Ju mund ta parandaloni këtë duke u çkyçur nga
+          llogaria juaj në YouTube përpara se të vizitoni faqen tonë.<br />
+          <br />
+          Përdorimi i YouTube bëhet në interes të një prezantimi të bukur dhe
+          funksional të ofertave tona online (Neni 6 Paragrafi 1 shkronja f e
+          GDPR).<br />
+          <br />
+          <br />
+          Gjirafa (gjirafa.com)<br />
+          <br />
+          Për ofrimin e përmbajtjeve televizive LIVE TV dhe videove, ne
+          integrojmë komponentë dhe player-a të shërbimit gjirafa.com. Ofruesi i
+          këtij shërbimi është Gjirafa, Inc. (ose filialet rajonale Gjirafa
+          Sh.p.k.).<br />
+          <br />
+          Kur hapni një faqe në faqen tonë të internetit ku është e integruar
+          një video e Gjirafës ose një transmetim LIVE TV, shfletuesi (browseri)
+          juaj krijon një lidhje direkte me serverët e Gjirafës. Përmes kësaj,
+          Gjirafa merr informacionin që ju keni vizituar faqen tonë me adresën
+          tuaj IP. Kjo është teknikisht e domosdoshme në mënyrë që transmetimi i
+          videos (stream) të mund të dërgohet në shfletuesin tuaj dhe të
+          luhet.<br />
+          <br />
+          Nëse keni një llogari tuajën në gjirafa.com dhe jeni të kyçur, Gjirafa
+          mund ta lidhë sjelljen tuaj të lundrimit direkt me profilin tuaj
+          personal. Për ta parandaluar këtë, duhet të çkyçeni nga llogaria juaj
+          në Gjirafa përpara se të vizitoni faqen tonë.<br />
+          <br />
+          Përdorimi i integrimeve të Gjirafës bëhet mbi bazën e interesit tonë
+          legjitim për një ofrim funksional dhe të pasur me media të portalit
+          tonë sipas Nenit 6 Paragrafi 1 shkronja f të GDPR.
+        </p>
+        <br />
+        <br />
+      </div>
+    </main>
+    <footer class="site-footer" id="Footer">
+      <a href="index.html">
+        <img src="knax-logo.png" alt="KNAX Logo" />
+      </a>
+      <ul class="footer-nav">
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
+      </ul>
+      <div class="footer-conent">
+        <p>
+          © KN<span class="knax-span">A</span>X - Knaqu Flix Straming - all
+          rights reserved
+        </p>
+        <p>
+          developed, designed and administrated by <strong>Sytrim Gashi</strong>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

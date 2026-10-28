@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="sq-SQ">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link id="fenster-logo" rel="icon" type="image/png" href="a-logo-cut.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik+Storm&family=Sekuya&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <title>Seriale</title>
+
+    <style>
+      /* Globale Box-Korrektur (Verhindert, dass das Grid zu breit wird) */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      /* 
+      main {
+        padding-top: 200px;
+        padding-left: 20px;
+        padding-right: 20px;
+        display: flex;
+        flex-direction: column;
+        min-height: calc(100vh - 150px);
+      }
+*/
+
+      main section {
+        margin-top: 0px;
+        width: 100%;
+        min-height: 100vh;
+        height: 100%;
+      }
+
+      h1 {
+        text-align: center;
+        width: 100%;
+      }
+
+      #seriesGrid {
+        display: grid;
+        /* auto-fit statt auto-fill verteilt die Karten schöner bei großen Bildschirmen */
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px 20px;
+      }
+
+      .serie-card {
+        flex: 0 0 17em;
+        height: 12em;
+        background: #111;
+        border-radius: 10px;
+        overflow: hidden;
+        cursor: pointer;
+        text-align: center;
+        color: white;
+        background-size: cover;
+        padding-bottom: 10px;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        /* Verhindert, dass Text/Bilder beim Skalieren unscharf werden */
+        backface-visibility: hidden;
+      }
+
+      .serie-card:hover {
+        transform: scale(
+          1.05
+        ); /* Leicht reduziert auf 1.05, damit es das Grid nicht zerschießt */
+        box-shadow: 0px 0px 20px 2px red;
+      }
+
+      .serie-card img {
+        width: 100%;
+        height: 220px;
+
+        display: block; /* Entfernt unschöne Lücken unter dem Bild */
+      }
+
+      /* MODAL */
+      #serieModal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        z-index: 9999;
+      }
+
+      #serieModal.open {
+        display: flex;
+      }
+
+      .modal-content {
+        background: #88000056;
+        padding: 40px 20px 20px 20px;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 900px;
+        color: white;
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        cursor: pointer;
+        font-size: 26px;
+        color: white;
+        z-index: 10000;
+        transition: color 0.2s;
+      }
+
+      .close-btn:hover {
+        color: red;
+      }
+
+      .episode-item {
+        padding: 10px;
+        background: #333;
+        margin-top: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .episode-item:hover {
+        background: #444;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <a href="index.html">
+        <img src="knax-logo.png" alt="KNAX Logo" />
+      </a>
+      <nav>
+        <ul>
+          <li>
+            <a href="index.html" data-text="←"
+              ><ion-icon name="home"></ion-icon
+            ></a>
+          </li>
+          <li><a href="seriale.html" data-text="Seriale">Seriale</a></li>
+          <li><a href="filma.html" data-text="Filma">Filma</a></li>
+          <li><a href="doku.html" data-text="Dokumentar">Dokumentar</a></li>
+          <li><a href="show.html" data-text="Show">Show</a></li>
+          <li><a href="livetv.html" data-text="LiveTV">LiveTV</a></li>
+        </ul>
+      </nav>
+      <div class="search-bar">
+        <form class="searchBar" onsubmit="event.preventDefault()">
+          <input type="text" name="kerko" id="searchInput" />
+          <label id="kerko-label" for="kerko">kërko</label>
+          <button class="submit" type="button">
+            <ion-icon class="search-icon" name="search-outline"></ion-icon>
+          </button>
+        </form>
+      </div>
+    </header>
+
+    <main>
+      <h1>Seriale</h1>
+      <section>
+        <!-- GRID -->
+        <div id="seriesGrid"></div>
+      </section>
+    </main>
+
+    <!-- MODAL -->
+    <div id="serieModal">
+      <div class="modal-content">
+        <div class="close-btn" onclick="closeModal()">✖</div>
+
+        <h2 id="episodeTitle"></h2>
+
+        <iframe
+          id="videoFrame"
+          width="100%"
+          height="400"
+          src=""
+          frameborder="0"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+        >
+        </iframe>
+
+        <h3>Të gjitha episodet</h3>
+        <div id="episodeList"></div>
+      </div>
+    </div>
+
+    <footer class="site-footer" id="Footer">
+      <a href="index.html">
+        <img src="knax-logo.png" alt="KNAX Logo" />
+      </a>
+      <ul class="footer-nav">
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
+      </ul>
+      <div class="footer-conent">
+        <p>
+          © KN<span class="knax-span">A</span>X - Knaqu Flix Straming - all
+          rights reserved
+        </p>
+        <p>
+          developed, designed and administrated by <strong>Sytrim Gashi</strong>
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      let seriesMap = {};
+
+      // 1. Daten aus der seriale.json laden
+      fetch("seriale.json")
+        .then((res) => {
+          if (!res.ok)
+            throw new Error("seriale.json konnte nicht geladen werden");
+          return res.json();
+        })
+        .then((data) => {
+          // Da data nun direkt das Array ist, nutzen wir data.forEach statt data.seriale.forEach
+          data.forEach((ep) => {
+            if (!seriesMap[ep.title]) seriesMap[ep.title] = [];
+            seriesMap[ep.title].push(ep);
+          });
+
+          // Initiales Grid aufbauen mit allen Serien
+          renderGrid(Object.keys(seriesMap));
+        })
+        .catch((error) => {
+          console.error("Fehler beim Laden der Seriendaten:", error);
+        });
+
+      // 2. Funktion zum Rendern des Grids basierend auf einer Liste von Titeln
+      function renderGrid(titlesToRender) {
+        const grid = document.getElementById("seriesGrid");
+        grid.innerHTML = ""; // Altes Grid leeren
+
+        titlesToRender.forEach((title) => {
+          const card = document.createElement("div");
+          card.classList.add("serie-card");
+
+          const firstEp = seriesMap[title][0];
+
+          card.innerHTML = `
+            <img src="${firstEp.image}">
+            <h3>${title}</h3>
+          `;
+
+          card.onclick = () => openSerieModal(title);
+          grid.appendChild(card);
+        });
+      }
+
+      // 3. Live-Suchfunktion hinzufügen
+      document
+        .getElementById("searchInput")
+        .addEventListener("input", function (e) {
+          const searchTerm = e.target.value.toLowerCase().trim();
+
+          // Filtert alle Titel, die den Suchbegriff enthalten
+          const filteredTitles = Object.keys(seriesMap).filter((title) =>
+            title.toLowerCase().includes(searchTerm),
+          );
+
+          renderGrid(filteredTitles);
+        });
+
+      // 4. Modal für die gewählte Serie öffnen
+      function openSerieModal(title) {
+        const modal = document.getElementById("serieModal");
+
+        // Chronologische Sortierung: Erst nach Staffel, dann nach Episode aufsteigend
+        const episodes = seriesMap[title].sort((a, b) => {
+          if (a.season !== b.season) {
+            return a.season - b.season;
+          }
+          return a.episode - b.episode;
+        });
+
+        // Automatisch die allererste Folge laden
+        updateEpisode(episodes[0]);
+
+        const list = document.getElementById("episodeList");
+        list.innerHTML = "";
+
+        // Episodenliste im Modal befüllen
+        episodes.forEach((ep) => {
+          const item = document.createElement("div");
+          item.classList.add("episode-item");
+          item.textContent = `Sezoni ${ep.season} - Episodi ${ep.episode}`;
+          item.onclick = () => updateEpisode(ep);
+          list.appendChild(item);
+        });
+
+        modal.classList.add("open");
+      }
+
+      // 5. Video-Player & Überschrift aktualisieren
+      function updateEpisode(ep) {
+        document.getElementById("episodeTitle").textContent =
+          `${ep.title} – Sezoni ${ep.season}, Episodi ${ep.episode}`;
+
+        document.getElementById("videoFrame").src =
+          `https://www.youtube.com/embed/${ep.youtube}?autoplay=1`;
+      }
+
+      // 6. Modal schließen und Videowiedergabe stoppen
+      function closeModal() {
+        const modal = document.getElementById("serieModal");
+        document.getElementById("videoFrame").src = "";
+        modal.classList.remove("open");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="sq-SQ">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link id="fenster-logo" rel="icon" type="image/png" href="a-logo-cut.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik+Storm&family=Sekuya&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <title>LiveTV</title>
+    <style>
+      /* Globale Box-Korrektur */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      main section {
+        margin-top: 0px;
+        width: 100%;
+        min-height: 100vh;
+        height: 100%;
+      }
+
+      h1 {
+        text-align: center;
+        width: 100%;
+        color: white;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .info-text {
+        text-align: center;
+        color: white;
+        font-family: "Poppins", sans-serif;
+        margin-bottom: 20px;
+      }
+
+      /* TV Grid-Layout passend zum Serien-Grid */
+      #tvGrid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px;
+      }
+
+      /* Styling für die TV-Cards */
+      .tv-card {
+        height: 12em;
+        background: linear-gradient(135deg, #222 0%, #111 100%);
+        border-radius: 10px;
+        overflow: hidden;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        backface-visibility: hidden;
+        border: 2px solid transparent;
+        font-family: "Poppins", sans-serif;
+        gap: 10px;
+        padding: 20px;
+      }
+
+      .tv-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 0px 20px 2px red;
+        border-color: red;
+      }
+
+      .tv-icon {
+        font-size: 3rem;
+        color: #888;
+        transition: color 0.2s;
+      }
+
+      .tv-card:hover .tv-icon {
+        color: red;
+      }
+
+      /* MODAL (Identisch mit deinem Serien-Modal) */
+      #tvModal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        z-index: 9999;
+      }
+
+      #tvModal.open {
+        display: flex;
+      }
+
+      .modal-content {
+        background: #88000056;
+        padding: 40px 20px 20px 20px;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 900px;
+        color: white;
+        max-height: 90vh;
+        overflow: hidden; /* ÄNDERUNG: Verhindert Scrollbalken im Container */
+        position: relative;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        cursor: pointer;
+        font-size: 26px;
+        color: white;
+        z-index: 10000;
+        transition: color 0.2s;
+      }
+
+      .close-btn:hover {
+        color: red;
+      }
+
+      #videoFrame {
+        border-radius: 5px;
+        background: #000;
+        width: 100%; /* NEU: Zwingt das Video auf die volle Breite */
+        height: auto; /* NEU: Entfernt die starre Höhenvorgabe */
+        aspect-ratio: 16 / 9; /* NEU: Erzwingt das perfekte TV-Format */
+        display: block; /* NEU: Verhindert kleine Abstände unter dem Video */
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="index.html">
+        <img src="knax-logo.png" alt="KNAX Logo" />
+      </a>
+      <nav>
+        <ul>
+          <li>
+            <a href="index.html" data-text="←"
+              ><ion-icon name="home"></ion-icon
+            ></a>
+          </li>
+          <li><a href="seriale.html" data-text="Seriale">Seriale</a></li>
+          <li><a href="filma.html" data-text="Filma">Filma</a></li>
+          <li><a href="doku.html" data-text="Dokumentar">Dokumentar</a></li>
+          <li><a href="show.html" data-text="Show">Show</a></li>
+          <li><a href="livetv.html" data-text="LiveTV">LiveTV</a></li>
+        </ul>
+      </nav>
+      <div class="search-bar">
+        <form class="searchBar" onsubmit="event.preventDefault()">
+          <input type="text" name="kerko" id="searchInput" />
+          <label id="kerko-label" for="kerko">kërko</label>
+          <button class="submit" type="button">
+            <ion-icon class="search-icon" name="search-outline"></ion-icon>
+          </button>
+        </form>
+      </div>
+    </header>
+
+    <main>
+      <h1>LiveTV</h1>
+      <section>
+        <!-- GRID FÜR SENDER-CARDS -->
+        <div id="tvGrid">
+          <!-- RTK 1 -->
+          <div
+            class="tv-card"
+            onclick="
+              openTvModal(
+                'RTK 1 - SATELIT',
+                'https://video.gjirafa.com/embed/rtk-1-sat?autoplay=true&amp;am=false&amp;c=1&amp;ts=true&amp;tu=true',
+              )
+            "
+          >
+            <ion-icon name="tv-outline" class="tv-icon"></ion-icon>
+            <h3>RTK 1 - SAT</h3>
+          </div>
+
+          <!-- RTV 21 -->
+          <div
+            class="tv-card"
+            onclick="
+              openTvModal(
+                'RTV 21 - Drejtpërdrejt',
+                'https://video.gjirafa.com/embed/rtv-21-live?autoplay=true&amp;am=false&amp;c=0&amp;ts=true&amp;tu=true',
+              )
+            "
+          >
+            <ion-icon name="tv-outline" class="tv-icon"></ion-icon>
+            <h3>RTV 21</h3>
+          </div>
+
+          <!-- KTV -->
+          <div
+            class="tv-card"
+            onclick="
+              openTvModal(
+                'KTV - Drejtpërdrejt',
+                'https://video.gjirafa.com/embed/ktv-live?autoplay=true&amp;am=false&amp;c=0&amp;ts=true&amp;tu=true',
+              )
+            "
+          >
+            <ion-icon name="tv-outline" class="tv-icon"></ion-icon>
+            <h3>KTV</h3>
+          </div>
+
+          <!-- T7 -->
+          <div
+            class="tv-card"
+            onclick="
+              openTvModal(
+                'T7 - Drejtpërdrejt',
+                'https://video.gjirafa.com/embed/t7-live?autoplay=true&amp;am=false&amp;c=0&amp;ts=true&amp;tu=true',
+              )
+            "
+          >
+            <ion-icon name="tv-outline" class="tv-icon"></ion-icon>
+            <h3>T7</h3>
+          </div>
+
+          <!-- ATV -->
+          <div
+            class="tv-card"
+            onclick="
+              openTvModal(
+                'ATV - Drejtpërdrejt',
+                'https://video.gjirafa.com/embed/atv-live-tv?autoplay=true&amp;am=false&amp;c=0&amp;ts=true&amp;tu=true',
+              )
+            "
+          >
+            <ion-icon name="tv-outline" class="tv-icon"></ion-icon>
+            <h3>ATV</h3>
+          </div>
+
+          <!-- Syri -->
+          <div
+            class="tv-card"
+            onclick="
+              openTvModal(
+                'Syri - Drejtpërdrejt',
+                'https://video.gjirafa.com/embed/syrivision?autoplay=true&amp;am=false&amp;c=0&amp;ts=true&amp;tu=true',
+              )
+            "
+          >
+            <ion-icon name="tv-outline" class="tv-icon"></ion-icon>
+            <h3>Syri Vision</h3>
+          </div>
+
+          <!-- A2 -->
+          <div
+            class="tv-card"
+            onclick="
+              openTvModal(
+                'A2 - Drejtpërdrejt',
+                'https://video.gjirafa.com/embed/a2-cnn-live?autoplay=true&amp;am=false&amp;c=0&amp;ts=true&amp;tu=true',
+              )
+            "
+          >
+            <ion-icon name="tv-outline" class="tv-icon"></ion-icon>
+            <h3>A2</h3>
+          </div>
+
+          <!-- ARTA -->
+          <div
+            class="tv-card"
+            onclick="
+              openTvModal(
+                'ARTA - Drejtpërdrejt',
+                'https://video.gjirafa.com/embed/arta-news?autoplay=true&amp;am=false&amp;c=0&amp;ts=true&amp;tu=true',
+              )
+            "
+          >
+            <ion-icon name="tv-outline" class="tv-icon"></ion-icon>
+            <h3>ARTA</h3>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- TV PLAYER MODAL OVERLAY -->
+    <div id="tvModal">
+      <div class="modal-content">
+        <div class="close-btn" onclick="closeTvModal()">✖</div>
+        <h2
+          id="streamTitle"
+          style="margin-top: 0; font-family: &quot;Poppins&quot;, sans-serif"
+        ></h2>
+        <iframe
+          id="videoFrame"
+          width="100%"
+          src=""
+          frameborder="0"
+          allow="
+            autoplay;
+            encrypted-media;
+            clipboard-write;
+            microphone;
+            camera;
+            midi;
+            encrypted-media;
+            gyroscope;
+            picture-in-picture;
+          "
+          allowfullscreen
+        >
+        </iframe>
+      </div>
+    </div>
+
+    <footer class="site-footer" id="Footer">
+      <a href="index.html">
+        <img src="knax-logo.png" alt="KNAX Logo" />
+      </a>
+      <ul class="footer-nav">
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
+      </ul>
+      <div class="footer-conent">
+        <p>
+          © KN<span class="knax-span">A</span>X - Knaqu Flix Straming - all
+          rights reserved
+        </p>
+        <p>
+          developed, designed and administrated by <strong>Sytrim Gashi</strong>
+        </p>
+      </div>
+    </footer>
+
+    <!-- JavaScript für Modal-Steuerung & Live-Suche -->
+    <script>
+      // Funktion zum Öffnen des Modals und Laden des Streams
+      function openTvModal(title, streamUrl) {
+        document.getElementById("streamTitle").innerText = title;
+        document.getElementById("videoFrame").src = streamUrl;
+        document.getElementById("tvModal").classList.add("open");
+      }
+
+      // Funktion zum Schließen und Stoppen des Streams
+      function closeTvModal() {
+        document.getElementById("tvModal").classList.remove("open");
+        document.getElementById("videoFrame").src = ""; // Stoppt das Video im Hintergrund
+      }
+
+      // Schließen, wenn man außerhalb des Modals klickt
+      window.onclick = function (event) {
+        const modal = document.getElementById("tvModal");
+        if (event.target == modal) {
+          closeTvModal();
+        }
+      };
+
+      // Live-Suchfunktion für die TV-Sender
+      document
+        .getElementById("searchInput")
+        .addEventListener("input", function (e) {
+          const searchTerm = e.target.value.toLowerCase().trim();
+          const cards = document.querySelectorAll(".tv-card");
+
+          cards.forEach((card) => {
+            const titleText = card.querySelector("h3").innerText.toLowerCase();
+            if (titleText.includes(searchTerm)) {
+              card.style.display = "flex"; // Zeigen, wenn Treffer
+            } else {
+              card.style.display = "none"; // Verstecken, wenn kein Treffer
+            }
+          });
+        });
+    </script>
+  </body>
+</html>

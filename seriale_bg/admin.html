@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="sq">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="admin.css">
+    <title>Paneli i Administrimit - KNAX</title>
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+        background: #111;
+        color: #fff;
+      }
+      input {
+        width: 400px;
+        padding: 10px;
+      }
+      button {
+        padding: 10px 20px;
+        margin-top: 10px;
+        cursor: pointer;
+      }
+      pre {
+        background: #222;
+        padding: 20px;
+        margin-top: 20px;
+        white-space: pre-wrap;
+      }
+      h2 {
+        margin-top: 40px;
+      }
+      #serieDay {
+        width: 80px;
+      }
+      #serieDate {
+        width: 80px;
+      }
+      #serieTime {
+        width: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Paneli i Administrimit - KNAX</h1>
+
+    <!-- ===================== SERIALE ===================== -->
+    <h2>Importuesi i Serive</h2>
+
+    <input id="serieTitle" type="text" placeholder="Titulli i serisë" />
+    <br /><br />
+
+    <input id="serieSeason" type="number" placeholder="Sezoni (p.sh. 2)" />
+    <br /><br />
+
+    <input id="serieEpisode" type="number" placeholder="Episodi (p.sh. 5)" />
+    <br /><br />
+
+    <input id="serieYoutube" type="text" placeholder="YouTube ID (p.sh. -MylyO4EnRA)"
+    />
+    <br /><br />
+
+    <input id="serieThumbnail" type="text" placeholder="Rruga e thumbnail-it (p.sh. /thumbs/seria1.jpg)"
+    />
+    <br /><br />
+
+    <input id="serieChannel" type="text" placeholder="Emri i kanalit (p.sh. Klan TV)"
+    />
+    <br /><br />
+
+    <label>Tag:</label>
+    <select id="serieDay">
+      <option value="E Hënë">E Hënë</option>
+      <option value="E Martë">E Martë</option>
+      <option value="E Mërkurë">E Mërkurë</option>
+      <option value="E Enjte">E Enjte</option>
+      <option value="E Premte">E Premte</option>
+      <option value="E Shtunë">E Shtunë</option>
+      <option value="E Diel">E Diel</option>
+    </select>
+    
+    <label>Datum:</label>
+    <input type="date" id="serieDate" />
+
+    <label>Uhrzeit:</label>
+    <input type="time" id="serieTime" value="20:00" />
+    <br>
+
+    <button id="btnSerieAdd">Krijo Json</button>
+
+    <pre id="serieOutput"></pre>
+
+    <!-- ===================== FILMA ===================== -->
+    <h2>Importuesi i Filmave</h2>
+
+    <input id="filmTitle" type="text" placeholder="Titulli i filmit" />
+    <br /><br />
+
+    <input id="filmGenre" type="text" placeholder="Zhanri (p.sh. Aksion)" />
+    <br /><br />
+
+    <input id="filmYear" type="year" placeholder="Viti i publikimit (p.sh. 2024)"
+    />
+    <br /><br />
+
+    <input
+      id="filmYoutube"
+      type="text"
+      placeholder="YouTube ID (p.sh. -MylyO4EnRA)"
+    />
+    <br /><br />
+
+    <input
+      id="filmImage"
+      type="text"
+      placeholder="Rruga e imazhit (p.sh. /filma_bg/filmi123.jpg)"
+    />
+    <br /><br />
+
+    <button id="btnFilmAdd">Krijo Json</button>
+
+    <pre id="filmOutput"></pre>
+
+    <script src="admin.js"></script>
+  </body>
+</html>

@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="sq-SQ">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link id="fenster-logo" rel="icon" type="image/png" href="a-logo-cut.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik+Storm&family=Sekuya&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <title>Show</title>
+    <style>
+      /* Globale Box-Korrektur (Verhindert, dass das Grid zu breit wird) */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      main section {
+        margin-top: 0px;
+        width: 100%;
+        min-height: 100vh;
+        height: 100%;
+      }
+
+      h1 {
+        text-align: center;
+        width: 100%;
+      }
+
+      /* Grid exakt wie bei den Serien */
+      #moviesGrid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 20px;
+        padding: 20px 20px;
+      }
+
+      .movie-card {
+        background: #111;
+        border-radius: 10px;
+        overflow: hidden;
+        cursor: pointer;
+        text-align: center;
+        color: white;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        backface-visibility: hidden;
+        padding-bottom: 15px; /* Platz für Meta-Infos unten */
+      }
+
+      .movie-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 0px 20px 2px red;
+      }
+
+      .movie-card img {
+        width: 100%;
+        height: 150px; /* Vorher 220px -> Jetzt kleiner */
+        object-fit: cover;
+        display: block;
+      }
+
+      .movie-card h3 {
+        margin: 10px 0 5px 0;
+        padding: 0 10px;
+      }
+
+      .movie-meta {
+        color: #aaa;
+        font-size: 13px;
+        margin: 0;
+        padding: 0 10px;
+      }
+
+      /* MODAL FÜR FILME */
+      #movieModal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        z-index: 9999;
+      }
+
+      #movieModal.open {
+        display: flex;
+      }
+
+      .modal-content {
+        background: #88000056;
+        padding: 40px 20px 20px 20px;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 900px;
+        color: white;
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        cursor: pointer;
+        font-size: 26px;
+        color: white;
+        z-index: 10000;
+        transition: color 0.2s;
+      }
+
+      .close-btn:hover {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="index.html">
+        <img src="knax-logo.png" alt="KNAX Logo" />
+      </a>
+      <nav>
+        <ul>
+          <li>
+            <a href="index.html" data-text="←"
+              ><ion-icon name="home"></ion-icon
+            ></a>
+          </li>
+          <li><a href="seriale.html" data-text="Seriale">Seriale</a></li>
+          <li><a href="filma.html" data-text="Filma">Filma</a></li>
+          <li><a href="doku.html" data-text="Dokumentar">Dokumentar</a></li>
+          <li><a href="show.html" data-text="Show">Show</a></li>
+          <li><a href="livetv.html" data-text="LiveTV">LiveTV</a></li>
+        </ul>
+      </nav>
+      <div class="search-bar">
+        <form class="searchBar">
+          <input type="text" name="kerko" id="searchInput" />
+          <label id="kerko-label" for="kerko">kërko</label>
+          <button class="submit">
+            <ion-icon class="search-icon" name="search-outline"></ion-icon>
+          </button>
+        </form>
+      </div>
+    </header>
+    <section>
+      <p style="color: white">
+        ketu do te shfaqen <b style="color: red;">Show</b> me te shikuara ne trevat shqipetare
+      </p>
+    </section>
+    <footer class="site-footer" id="Footer">
+      <a href="index.html">
+        <img src="knax-logo.png" alt="KNAX Logo" />
+      </a>
+      <ul class="footer-nav">
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
+      </ul>
+      <div class="footer-conent">
+        <p>
+          © KN<span class="knax-span">A</span>X - Knaqu Flix Straming - all
+          rights reserved
+        </p>
+        <p>
+          developed, designed and administrated by <strong>Sytrim Gashi</strong>
+        </p>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

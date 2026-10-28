@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <title>Paneli i Administrimit - KNAX</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background: #111; color: #fff; }
+    input { width: 400px; padding: 10px; }
+    button { padding: 10px 20px; margin-top: 10px; cursor: pointer; }
+    pre { background: #222; padding: 20px; margin-top: 20px; white-space: pre-wrap; }
+    h2 { margin-top: 40px; }
+  </style>
+</head>
+<body>
+
+  <h1>Paneli i Administrimit - KNAX</h1>
+
+  <!-- ===================== SERITË ===================== -->
+  <h2>Importuesi i Serive</h2>
+
+  <input id="serieTitle" type="text" placeholder="Titulli i serisë">
+  <br><br>
+
+  <input id="serieSeason" type="number" placeholder="Sezoni (p.sh. 2)">
+  <br><br>
+
+  <input id="serieEpisode" type="number" placeholder="Episodi (p.sh. 5)">
+  <br><br>
+
+  <input id="serieEmbed" type="text" placeholder="Embed kodi i YouTube (p.sh. https://www.youtube.com/embed/XXXX)">
+  <br><br>
+
+  <input id="serieThumbnail" type="text" placeholder="Rruga e thumbnail-it (p.sh. /thumbs/seria1.jpg)">
+  <br><br>
+
+  <input id="serieChannel" type="text" placeholder="Emri i kanalit (p.sh. Klan TV)">
+  <br><br>
+
+  <button id="btnSerieAdd">Krijo Serinë</button>
+
+  <pre id="serieOutput"></pre>
+
+
+  <!-- ===================== FILMAT ===================== -->
+  <h2>Importuesi i Filmave</h2>
+
+  <input id="filmTitle" type="text" placeholder="Titulli i filmit">
+  <br><br>
+
+  <input id="filmGenre" type="text" placeholder="Zhanri (p.sh. Aksion)">
+  <br><br>
+
+  <input id="filmYear" type="number" placeholder="Viti i publikimit (p.sh. 2024)">
+  <br><br>
+
+  <input id="filmEmbed" type="text" placeholder="Embed kodi i YouTube (p.sh. https://www.youtube.com/embed/XXXX)">
+  <br><br>
+
+  <input id="filmCover" type="text" placeholder="Rruga e cover-it (p.sh. /covers/filmi123.jpg)">
+  <br><br>
+
+  <button id="btnFilmAdd">Krijo Filmin</button>
+
+  <pre id="filmOutput"></pre>
+
+  <script src="admin.js"></script>
+</body>
+</html>

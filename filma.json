@@ -1,0 +1,93 @@
+[
+    {
+      "title": "Sedër 2",
+      "genre": "Aksion / Komedi / Dramë",
+      "year": 2022,
+      "youtube": "C4vqSQ0lPfQ",
+      "image": "/filma_bg/seder_2_cover.jpg"
+    },
+    {
+      "title": "Sedër",
+      "genre": "Aksion / Komedi / Dramë",
+      "year": 2019,
+      "youtube": "sbJP0FycrQU",
+      "image": "/filma_bg/seder_cover.jpg"
+    },
+    {
+      "title": "Policë për Jetë",
+      "genre": "Komedi",
+      "year": 2026,
+      "youtube": "ZCcEdNn9yiM",
+      "image": "/filma_bg/police_per_jete_2026_bg.jpg"
+    },
+    {
+      "title": "Triumf pa Lavdi",
+      "genre": "Dramë-Aksion",
+      "year": 2025,
+      "youtube": "YfMWLJZxT1U",
+      "image": "/filma_bg/triumf_pa_lavdi_2025_bg.jpg"
+    },
+    {
+      "title": "Tryeza e zezë",
+      "genre": "Krim-Dramë",
+      "year": 2024,
+      "youtube": "JHd_x15VAzo",
+      "image": "/filma_bg/tryeza_e_zeze_2024_bg.jpg"
+    },
+    {
+      "title": "K.O.T",
+      "genre": "Komedi",
+      "year": 2024,
+      "youtube": "1H5Pz9k0-2Y",
+      "image": "/filma_bg/kot_2024_bg.jpg"
+    },
+    {
+      "title": "Policë Për Kokë",
+      "genre": "Aksion-Komedi",
+      "year": 2023,
+      "youtube": "GeWlI9KXOgE",
+      "image": "/filma_bg/police_per_koke_2023_bg.jpg"
+    },
+    {
+      "title": "Lugina e djallit",
+      "genre": "Horror",
+      "year": 2022,
+      "youtube": "yqyot8GAOzg",
+      "image": "/filma_bg/lugina_e_djallit_2022_bg.jpg"
+    },
+    {
+      "title": "Alisa",
+      "genre": "Mister-Horror",
+      "year": 2022,
+      "youtube": "TScUWqe31z4",
+      "image": "/filma_bg/alisa_2022_bg.jpg"
+    },
+    {
+      "title": "Ditari",
+      "genre": "Horror",
+      "year": 2021,
+      "youtube": "tUPH-K-V5xM",
+      "image": "/filma_bg/ditari_2021_bg.jpg"
+    },
+    {
+      "title": "Njeriu i zi",
+      "genre": "Dramë-Thriller",
+      "year": 2017,
+      "youtube": "T0DKPjamOBE",
+      "image": "/filma_bg/njeriu_i_zi_2017_bg.jpg"
+    },
+    {
+      "title": "Zori",
+      "genre": "Aksion-Krim",
+      "year": 2014,
+      "youtube": "EN7pktCEwKM",
+      "image": "/filma_bg/zori_2014_bg.jpg"
+    },
+    {
+      "title": "Istanbul Connection",
+      "genre": "Aksion-Thriller",
+      "year": 2024,
+      "youtube": "KHnUXKCzKvk",
+      "image": "/filma_bg/istanbul_connection_bg.jpg"
+    }
+  ]
